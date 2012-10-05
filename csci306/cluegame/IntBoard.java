@@ -20,7 +20,7 @@ public class IntBoard {
 		return new TreeSet<Integer>();		
 	}
 	
-	public LinkedList<Integer> getAdjList() {
+	public LinkedList<Integer> getAdjList(int whichAdjList) {
 		return new LinkedList<Integer>();		
 	}
 	
