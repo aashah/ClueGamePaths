@@ -12,17 +12,17 @@ public class IntBoard {
 		
 	}
 	
-	public void calcTargets() {
+	public void calcTargets(int start, int numSteps) {
 		
 	}
 	
-	public TreeSet<Integer> getTargets(int start, int numSteps) {
-		return null;
+	public TreeSet<Integer> getTargets() {
+		return new TreeSet<Integer>();
 		
 	}
 	
 	public LinkedList<Integer> getAdjList() {
-		return null;
+		return new LinkedList<Integer>();
 		
 	}
 	
