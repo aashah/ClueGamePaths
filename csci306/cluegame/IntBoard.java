@@ -17,13 +17,11 @@ public class IntBoard {
 	}
 	
 	public TreeSet<Integer> getTargets() {
-		return null;
-		
+		return new TreeSet<Integer>();		
 	}
 	
-	public LinkedList<Integer> getAdjList(int index) {
-		return null;
-		
+	public LinkedList<Integer> getAdjList() {
+		return new LinkedList<Integer>();		
 	}
 	
 	public int calcIndex() {
