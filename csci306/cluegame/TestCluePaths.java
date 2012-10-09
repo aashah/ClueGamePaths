@@ -22,6 +22,7 @@ public class TestCluePaths {
 	@Test
 	public void testAdjacency() {
 		LinkedList testAdjacencyList = testBoard.getAdjList(0);
+		//testBoard.printAdjancies();
 		Assert.assertTrue(testAdjacencyList.contains(4));
 		Assert.assertTrue(testAdjacencyList.contains(1));
 		Assert.assertEquals(2, testAdjacencyList.size());
@@ -31,6 +32,7 @@ public class TestCluePaths {
 	public void testTargets() {
 		testBoard.calcTargets(3, 3);
 		TreeSet targets= testBoard.getTargets();
+		testBoard.printTargets();
 		Assert.assertEquals(6, targets.size());
 		Assert.assertTrue(targets.contains(0));
 		Assert.assertTrue(targets.contains(5));

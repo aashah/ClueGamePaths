@@ -10,11 +10,15 @@ public class IntBoard {
     private static final int COLS = 4;
     private TreeSet<Integer> targets;
     private Map<Integer, LinkedList<Integer>> adjacencies;
+    
+    private LinkedList<Integer> seen;
    
    
     public IntBoard() {
         adjacencies = new HashMap<Integer, LinkedList<Integer>>();
         targets = new TreeSet<Integer>();
+        
+        seen = new LinkedList<Integer>();
     }
    
     public void calcAdjacencies() {
@@ -27,9 +31,9 @@ public class IntBoard {
                     adj.add(calcIndex(r -1, c));
                 if (c > 0)
                     adj.add(calcIndex(r, c -1));
-                if (r < ROWS)
+                if (r < (ROWS -1))
                     adj.add(calcIndex(r +1, c));
-                if (c < COLS)
+                if (c < (COLS -1))
                     adj.add(calcIndex(r, c +1));
                
                 adjacencies.put(currentIndex, adj);
@@ -45,19 +49,41 @@ public class IntBoard {
             for (int j : adj) {
                 System.out.print(j + "=>");
             }
+            System.out.print("\n");
         }
     }
    
     public void calcTargets(int start, int numSteps) {
-       
+    	seen.push(start);
+    	System.out.println("We're at : " + start + " numsteps: " + numSteps);
+    	if (numSteps == 0) {
+    		targets.add(start);
+    		return;
+    	}
+    	LinkedList<Integer> adjList = getAdjList(start);
+    	
+    	for (int i : adjList) {
+    		if (!seen.contains(i)) {
+    			calcTargets(i, numSteps -1);
+    			seen.pop();
+    		}
+    	}
+    	
+    	
+    }
+    
+    public void printTargets() {
+    	for (int i : targets) {
+    		System.out.println("Target: " + i);
+    	}
     }
    
     public TreeSet<Integer> getTargets() {
-        return new TreeSet<Integer>();       
+        return targets;       
     }
    
     public LinkedList<Integer> getAdjList(int whichAdjList) {
-        return new LinkedList<Integer>();       
+        return adjacencies.get(whichAdjList);      
     }
    
     public int calcIndex(int row, int col) {
